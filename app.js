@@ -10,6 +10,6 @@ app.use(express.static('static'));
 app.use('/player',(req,res)=>{
   let video = {src:req.query.id + ".mp4",name:"TEST"};
   res.set('Content-Type','text/html');
-  res.send(ejs.render(fs.readFileSync("./views/player.ejs"),{video:video}));
+  res.send(ejs.render(fs.readFileSync("./views/player.ejs",'utf-8')));
 });
 app.listen(80);
