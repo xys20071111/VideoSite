@@ -1,0 +1,23 @@
+{
+  "name": "videosite",
+  "version": "0.0.1",
+  "description": "A site that can play video",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.dev.tencent.com/xys20071111/VideoOndemandPlayer.git"
+  },
+  "keywords": [
+    "video",
+    "server"
+  ],
+  "author": "xys20071111",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
+  }
+}
