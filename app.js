@@ -11,11 +11,9 @@ app.use('/static',express.static('static'));
 app.use('/player',(req,res)=>{
   let video = {};
     db.query('select * from videoList where id=?',[req.query.id],(err,result)=>{
-      if(err){
-        throw err;
-      }
-      video.src = '/video/' + result.id + '.mp4';
-      video.name = result.name;
+      if(err){throw err;}
+      video.src = '/video/' + result[0].id + '.mp4';
+      video.name = result[0].name;
     });
   res.set('Content-Type','text/html');
   res.send(ejs.render(fs.readFileSync("./views/player.ejs",'utf-8'),{video:video}));
