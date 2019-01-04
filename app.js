@@ -18,4 +18,9 @@ app.use('/player',(req,res)=>{
   res.set('Content-Type','text/html');
   res.send(ejs.render(fs.readFileSync("./views/player.ejs",'utf-8'),{video:video}));
 });
+app.use('/index',index);
+app.use('/',index);
+function index(req,res){
+  
+}
 app.listen(80);
