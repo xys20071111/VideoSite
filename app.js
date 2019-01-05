@@ -21,6 +21,12 @@ app.use('/player',(req,res)=>{
 app.use('/index',index);
 app.use('/',index);
 function index(req,res){
-  
+  let info;
+  db.query('select * from videoList',(err,result)=>{
+    if(err){throw err;}
+    info=result;
+  });
+  res.set('Content-Type','text/html');
+  res.send(ejs.render(fs.readFileSync("./views/index.ejs",'utf-8'),{index:info}));
 }
 app.listen(80);
