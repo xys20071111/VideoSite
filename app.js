@@ -8,7 +8,7 @@ const db_config={
   host:'127.0.0.1',
   user:'videosearch',
   password:'123456',
-  database:'VideoSite'
+  database:'videosite'
 };
 
 const db = mysql.createConnection(db_config);
@@ -29,15 +29,16 @@ app.use('/player',(req,res)=>{
   res.send(ejs.render(fs.readFileSync("./views/player.ejs",'utf-8'),{video:video}));
 });
 //首页
-app.use('/index',index);
+
 app.use('/',index);
 function index(req,res){
   let info = null;
   db.query('select * from videoList',(err,result)=>{
     if(err){throw err;}
     info=result;
+    res.set('Content-Type','text/html');
+    res.send(ejs.render(fs.readFileSync("./views/index.ejs",'utf-8'),{index:result}));
   });
-  res.set('Content-Type','text/html');
-  res.send(ejs.render(fs.readFileSync("./views/index.ejs",'utf-8'),{index:info}));
+
 }
 app.listen(80);

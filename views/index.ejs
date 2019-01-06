@@ -5,9 +5,9 @@
     <title>首页</title>
   </head>
   <body>
-    <% for(let i = 0;i<info.length;i++){ %>
+    <% for(let i = 0;i<index.length;i++){ %>
       <div class="videoInfo">
-        <a href=<%= '\"' + '/player?id=' + info[i].id + '\"'%>><%= info[i].name %></a>
+        <a href=<%= '/player?id=' + index[i].id%>><%= index[i].name %></a>
       </div>
     <% } %>
   </body>
