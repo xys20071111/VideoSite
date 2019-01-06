@@ -3,10 +3,18 @@ const express = require('express');
 const ejs = require('ejs');
 const fs = require('fs');
 const mysql = require('mysql');
-const config = require('./config');
-const db = mysql.createConnection(config.db);
+
+const db_config={
+  host:'127.0.0.1',
+  user:'videosearch',
+  password:'123456',
+  database:'VideoSite'
+};
+
+const db = mysql.createConnection(db_config);
 const app = express();
 db.connect(function(err){if(err){throw err;}});
+
 app.use('/video',express.static('video'));
 app.use('/static',express.static('static'));
 //播放页
