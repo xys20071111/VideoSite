@@ -3,15 +3,9 @@ const express = require('express');
 const ejs = require('ejs');
 const fs = require('fs');
 const mysql = require('mysql');
+const config = require('./config');
 
-const db_config={
-  host:'127.0.0.1',
-  user:'videosearch',
-  password:'123456',
-  database:'videosite'
-};
-
-const db = mysql.createConnection(db_config);
+const db = mysql.createConnection(config.db);
 const app = express();
 db.connect(function(err){if(err){throw err;}});
 
@@ -19,14 +13,15 @@ app.use('/video',express.static('video'));
 app.use('/static',express.static('static'));
 //播放页
 app.use('/player',(req,res)=>{
-  let video = {};
     db.query('select * from videoList where id=' + db.escape(req.query.id) + ';',(err,result)=>{
       if(err){throw err;}
+      let video = {};
       video.src = '/video/' + result[0].id + '.mp4';
       video.name = result[0].name;
+      res.set('Content-Type','text/html');
+      res.send(ejs.render(fs.readFileSync("./views/player.ejs",'utf-8'),{video:video}));
+      console.log(video)
     });
-  res.set('Content-Type','text/html');
-  res.send(ejs.render(fs.readFileSync("./views/player.ejs",'utf-8'),{video:video}));
 });
 //首页
 
