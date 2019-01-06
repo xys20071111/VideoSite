@@ -20,10 +20,7 @@ app.use('/player',(req,res)=>{
       video.name = result[0].name;
       res.set('Content-Type','text/html');
       res.send(ejs.render(fs.readFileSync("./views/player.ejs",'utf-8'),{video:video}));
-<<<<<<< HEAD
-=======
       console.log(video)
->>>>>>> f070bc57e0ae4f32ab21e0c0634b4ad27a49c7d4
     });
 });
 //首页
