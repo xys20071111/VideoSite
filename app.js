@@ -16,6 +16,7 @@ app.use('/player',player);
 //首页
 app.use('/',index);
 app.listen(80);
+
 function index(req,res){
   db.query('select * from videoList',(err,result)=>{
     if(err){throw err;}
