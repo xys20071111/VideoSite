@@ -32,6 +32,6 @@ function player(req,res){
     video.name = result[0].name;
     res.set('Content-Type','text/html');
     res.send(ejs.render(fs.readFileSync("./views/player.ejs",'utf-8'),{video:video}));
-    console.log(video)
+    //console.log(video)
   });
 }
