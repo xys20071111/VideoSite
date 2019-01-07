@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= video.name %> -- 介绍</title>
+    <link rel="stylesheet" href="/static/css/uikit.min.css" />
+    <script src="/static/js/jquery-3.3.1.js"></script>
+    <script src="/static/js/uikit.min.js"></script>
+  </head>
+  <body>
+    <div id=poster" class="uk-panel uk-panel-box>
+      <img src=<%= '/static/poster/' + video.poster %> alt=""></img>
+    </div>
+    <div class="uk-panel uk-panel-box">
+      <h1><%= video.name %></h1><br>
+      <h3>介绍：</h3><br>
+      <%= video.intro %>
+    </div>
+    <a href=<%= '/player?id=' + video.id%>>播放</a>
+  </body>
+</html>

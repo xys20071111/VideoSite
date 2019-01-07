@@ -13,6 +13,19 @@ app.use('/video',express.static('video'));
 app.use('/static',express.static('static'));
 //播放页
 app.use('/player',player);
+//介绍页
+app.use('/intro',(req,res)=>{
+  db.query('select * from videoList where id=' + db.escape(req.query.id) + ';',(err,result)=>{
+    if(err){throw err;}
+    let video = {};
+    video.id = result[0].id;
+    video.name = result[0].name;
+    video.poster = '/static/poster/' + result[0].poster;
+    res.set('Content-Type','text/html');
+    res.send(ejs.render(fs.readFileSync("./views/intro.ejs",'utf-8'),{video:video}));
+    //console.log(video)
+  });
+});
 //首页
 app.use('/',index);
 app.listen(80);
