@@ -28,7 +28,7 @@ function player(req,res){
   db.query('select * from videoList where id=' + db.escape(req.query.id) + ';',(err,result)=>{
     if(err){throw err;}
     let video = {};
-    video.src = '/video/' + result[0].id + '.mp4';
+    video.src = '/video/' + result[0].id + result[0].type;
     video.name = result[0].name;
     res.set('Content-Type','text/html');
     res.send(ejs.render(fs.readFileSync("./views/player.ejs",'utf-8'),{video:video}));

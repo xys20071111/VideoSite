@@ -8,11 +8,19 @@
     <title>首页</title>
   </head>
   <body>
+    <%# <ul class="uk-breadcrumb">
+      <li><a href=""></a></li>
+      <li><a href="">...</a></li>
+      <li><span>...</span></li>
+      <li class="uk-active"><span>...</span></li>
+    </ul> %>
     <h1>视频列表</h1>
     <% for(let i = 0;i<index.length;i++){ %>
       <div class="uk-panel uk-panel-box uk-panel-box-primary">
+        <a href=<%= '/player?id=' + index[i].id %> >
         <img src=<%= '/static/poster/' + index[i].poster %> alt=<%= index[i].name %> width="200" height="200"></img></br>
-        <a class="uk-panel-title" href=<%= '/player?id=' + index[i].id%>><%= index[i].name %></a>
+        </a>
+        <a class="uk-panel-title" href=<%= '/player?id=' + index[i].id %>><%= index[i].name %></a>
       </div>
     <% } %>
   </body>
