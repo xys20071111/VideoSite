@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/static/css/uikit.min.css" />
+    <link rel="stylesheet" href="/static/css/index.css">
     <script src="/static/js/jquery-3.3.1.js"></script>
     <script src="/static/js/uikit.min.js"></script>
     <title>首页</title>
@@ -16,12 +17,13 @@
     </ul> %>
     <h1>视频列表</h1>
     <% for(let i = 0;i<index.length;i++){ %>
-      <div class="uk-panel uk-panel-box uk-panel-box-primary">
-        <a href=<%= '/player?id=' + index[i].id %> >
+      <div class="uk-panel uk-panel-box uk-panel-box-primary info">
+        <a href=<%= '/intro?id=' + index[i].id %> >
         <img src=<%= '/static/poster/' + index[i].poster %> alt=<%= index[i].name %> width="200" height="200"></img></br>
         </a>
-        <a class="uk-panel-title" href=<%= '/player?id=' + index[i].id %>><%= index[i].name %></a>
+        <a class="uk-panel-title" href=<%= '/intro?id=' + index[i].id %>><%= index[i].name %></a>
       </div>
+      </br>
     <% } %>
   </body>
 </html>
