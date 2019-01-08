@@ -30,7 +30,7 @@ app.use('/intro',(req,res)=>{
 });
 //首页
 app.use('/',index);
-app.listen(80);
+app.listen(config.port);
 console.log("Server is running on http://127.0.0.1");
 
 function index(req,res){
