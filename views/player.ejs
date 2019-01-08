@@ -3,8 +3,17 @@
   <head>
     <meta charset="utf-8"></meta>
     <title>正在播放:<%= video.name %></title>
+    <link rel="stylesheet" href="/static/css/intro.css">
+    <link rel="stylesheet" href="/static/css/uikit.min.css" />
+    <script src="/static/js/jquery-3.3.1.js"></script>
+    <script src="/static/js/uikit.min.js"></script>
   </head>
   <body>
+    <div class="menu">
+      <ul class="uk-breadcrumb">
+        <li><a href="/index">首页</a></li>
+      </ul>
+    </div>
     <video src=<%= video.src %>></video>
   </body>
 </html>

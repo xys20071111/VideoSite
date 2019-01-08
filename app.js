@@ -21,6 +21,8 @@ app.use('/intro',(req,res)=>{
     video.id = result[0].id;
     video.name = result[0].name;
     video.poster = '/static/poster/' + result[0].poster;
+    video.intro = result[0].intro;
+    //console.log(result[0])
     res.set('Content-Type','text/html');
     res.send(ejs.render(fs.readFileSync("./views/intro.ejs",'utf-8'),{video:video}));
     //console.log(video)
@@ -29,6 +31,7 @@ app.use('/intro',(req,res)=>{
 //首页
 app.use('/',index);
 app.listen(80);
+console.log("Server is running on http://127.0.0.1");
 
 function index(req,res){
   db.query('select * from videoList',(err,result)=>{
