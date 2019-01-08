@@ -31,8 +31,11 @@ app.use('/intro',(req,res)=>{
 //首页
 app.use('/',index);
 app.listen(config.port);
-console.log("Server is running on http://127.0.0.1");
-
+if(config.port == 80)
+  console.log("Server is running on http://127.0.0.1");
+else {
+  console.log("Server is running on http://127.0.0.1:%d",config.port);
+}
 function index(req,res){
   db.query('select * from videoList',(err,result)=>{
     if(err){throw err;}
