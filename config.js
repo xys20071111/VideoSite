@@ -4,3 +4,4 @@ exports.db={
   password:'123456',
   database:'videosite'
 };
+exports.port = 80;

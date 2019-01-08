@@ -4,7 +4,7 @@
   "description": "A site that can play video",
   "main": "app.js",
   "scripts": {
-    "test": "node app"
+    "start": "node app"
   },
   "repository": {
     "type": "git",
