@@ -2,12 +2,9 @@
 const express = require('express');
 const ejs = require('ejs');
 const fs = require('fs');
-const mysql = require('mysql');
 const config = require('./config');
 const render = require('./render');
-const db = mysql.createConnection(config.db);
 const app = express();
-db.connect(function(err){if(err){throw err;}});
 //静态资源
 app.use('/video',express.static('video'));
 app.use('/static',express.static('static'));
