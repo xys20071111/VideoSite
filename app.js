@@ -17,7 +17,7 @@ app.use('/player',player);
 app.use('/intro',intro);
 //首页
 app.use('/',index);
-//监听端口号
+//监听端口
 app.listen(config.port);
 //输出端口号
 if(config.port == 80)
@@ -38,6 +38,7 @@ function player(req,res){
   db.query('select * from videoList where id=' + db.escape(req.query.id) + ';',(err,result)=>{
     if(err){throw err;}
     let video = {};
+    //生成视频地址
     video.src = '/video/' + result[0].filename;
     video.name = result[0].name;
     res.set('Content-Type','text/html');
@@ -50,6 +51,7 @@ function intro(req,res){
   db.query('select * from videoList where id=' + db.escape(req.query.id) + ';',(err,result)=>{
     if(err){throw err;}
     let video = {};
+    //写入视频信息
     video.id = result[0].id;
     video.name = result[0].name;
     video.poster = '/static/poster/' + result[0].poster;
