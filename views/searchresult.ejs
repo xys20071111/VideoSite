@@ -6,9 +6,28 @@
     <link rel="stylesheet" href="/static/css/index.css">
     <script src="/static/js/jquery-3.3.1.js"></script>
     <script src="/static/js/uikit.min.js"></script>
-    <title></title>
+    <title>搜索结果--<%= word %></title>
   </head>
   <body>
-
+    <div class="menu">
+      <ul class="uk-breadcrumb">
+        <li><a href="/index">首页</a></li>
+      </ul>
+    </div>
+    <form class="uk-form" action="/search" method="get">
+      <input type="text" name="word" value="关键字">
+      <input type="submit" class="uk-button">
+    </form>
+    <h1>搜索结果</h1>
+    <div id="videoinfo">
+      <% for(let i = 0;i<index.length;i++){ %>
+        <div class="uk-panel uk-panel-box uk-panel-box-primary uk-panel-space info">
+          <a href=<%= '/intro?id=' + index[i].id %> >
+          <img src=<%= '/static/poster/' + index[i].poster %> alt=<%= index[i].name %> width="200" height="200"></img></br>
+          </a>
+          <a class="uk-panel-title" href=<%= '/intro?id=' + index[i].id %>><%= index[i].name %></a>
+        </div>
+        </br>
+      <% } %>
   </body>
 </html>

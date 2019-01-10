@@ -6,9 +6,17 @@
     <link rel="stylesheet" href="/static/css/index.css">
     <script src="/static/js/jquery-3.3.1.js"></script>
     <script src="/static/js/uikit.min.js"></script>
-    <title></title>
+    <title>搜索</title>
   </head>
   <body>
-
+    <div class="menu">
+      <ul class="uk-breadcrumb">
+        <li><a href="/index">首页</a></li>
+      </ul>
+    </div>
+    <form class="uk-form" action="/search" method="get">
+      <input type="text" name="word" value="关键字">
+      <input type="submit" class="uk-button">
+    </form>
   </body>
 </html>

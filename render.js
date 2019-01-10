@@ -39,4 +39,16 @@ exports.player = function (req,res){
     res.send(ejs.render(fs.readFileSync("./views/player.ejs",'utf-8'),{video:video}));
     //console.log(video)
   });
+};
+exports.search = function (req,res){
+  if(req.query.word){
+    db.query('select * from videoList WHERE name REGEXP \'' + req.query.word + '\';',(err,result)=>{
+      if(err){throw err;}
+      res.set('Content-Type','text/html');
+      res.send(ejs.render(fs.readFileSync("./views/searchresult.ejs",'utf-8'),{index:result,word:req.query.word}));
+    });
+  }else {
+    res.set('Content-Type','text/html');
+    res.send(fs.readFileSync('./views/search.html'));
+  }
 }

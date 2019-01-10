@@ -11,7 +11,9 @@ app.use('/player',render.player);
 //介绍页
 app.use('/intro',render.intro);
 //首页
-app.use('/',render.index);
+app.use('/index',render.index);
+//搜索
+app.use('/search',render.search);
 //监听端口
 app.listen(config.port);
 //输出端口号
