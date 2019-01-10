@@ -1,4 +1,6 @@
 const mysql = require('mysql');
+const ejs = require('ejs');
+const fs = require('fs');
 const config = require('./config');
 const db = mysql.createConnection(config.db);
 db.connect(function(err){if(err){throw err;}});

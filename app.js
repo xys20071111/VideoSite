@@ -1,7 +1,5 @@
 "use strict"
 const express = require('express');
-const ejs = require('ejs');
-const fs = require('fs');
 const config = require('./config');
 const render = require('./render');
 const app = express();

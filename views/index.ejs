@@ -9,20 +9,20 @@
     <title>首页</title>
   </head>
   <body>
-    <div class="menu">
-
-    </div>
-    <h1>视频列表</h1>
     <div class="videolist">
-      <% for(let i = 0;i<index.length;i++){ %>
-        <div class="uk-panel uk-panel-box uk-panel-box-primary uk-panel-space info">
-          <a href=<%= '/intro?id=' + index[i].id %> >
-          <img src=<%= '/static/poster/' + index[i].poster %> alt=<%= index[i].name %> width="200" height="200"></img></br>
-          </a>
-          <a class="uk-panel-title" href=<%= '/intro?id=' + index[i].id %>><%= index[i].name %></a>
-        </div>
-        </br>
-      <% } %>
+      <h1>视频列表</h1>
+      <div id="videoinfo">
+        <% for(let i = 0;i<index.length;i++){ %>
+          <div class="uk-panel uk-panel-box uk-panel-box-primary uk-panel-space info">
+            <a href=<%= '/intro?id=' + index[i].id %> >
+            <img src=<%= '/static/poster/' + index[i].poster %> alt=<%= index[i].name %> width="200" height="200"></img></br>
+            </a>
+            <a class="uk-panel-title" href=<%= '/intro?id=' + index[i].id %>><%= index[i].name %></a>
+          </div>
+          </br>
+        <% } %>
+      </div>
     </div>
+
   </body>
 </html>
