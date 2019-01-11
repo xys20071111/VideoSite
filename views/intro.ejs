@@ -20,7 +20,7 @@
         <img src=<%=  video.poster %> alt=<%= video.name %>></img>
       </div>
       <h2><%= video.name %></h2>
-      <h6><%= video.intro %></h6>
+      <h6>简介：<%= video.intro %></h6>
     </div>
     <a href=<%= '/player?id=' + video.id%>>
       <button class="uk-button uk-button-success" type="button" name="button">播放</button>
