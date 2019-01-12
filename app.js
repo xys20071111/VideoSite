@@ -2,6 +2,7 @@
 const express = require('express');
 const config = require('./config');
 const render = require('./render');
+const tag = require('./tag');
 const app = express();
 //静态资源
 app.use('/video',express.static('video'));
