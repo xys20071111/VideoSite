@@ -1,7 +1,7 @@
 const ejs = require('ejs');
 const fs = require('fs');
 const database = require('./database');
-
+const tag = require('./tag');
 //渲染首页
 exports.index = function (req,res){
   database.query('select * from videoList',(err,result)=>{
@@ -27,7 +27,7 @@ exports.intro = function intro(req,res){
   });
 };
 exports.player = function (req,res){
-  database.query('select * from videoList where id=' + database.escape(req.query.id) + ';',(err,result)=>{
+  database.query('select * from videoList where id=\'' + database.escape(req.query.id) + '\';',(err,result)=>{
     if(err){throw err;}
     let video = {};
     //生成视频地址
@@ -40,12 +40,18 @@ exports.player = function (req,res){
 };
 exports.search = function (req,res){
   if(req.query.word){
-    database.query('select * from videoList WHERE name REGEXP \'' + database.escape(req.query.word) + '\';',(err,result)=>{
+    database.query('select * from videoList WHERE name REGEXP \'' + req.query.word + '\';',(err,result)=>{
       if(err){throw err;}
       res.set('Content-Type','text/html');
       res.send(ejs.render(fs.readFileSync("./views/searchresult.ejs",'utf-8'),{index:result,word:req.query.word}));
     });
-  }else {
+  }else if(req.query.tag){
+    database.query('select * from videoList WHERE tag REGEXP \'' + req.query.tag + '\';',(err,result)=>{
+      if(err){throw err;}
+      res.set('Content-Type','text/html');
+      res.send(ejs.render(fs.readFileSync("./views/searchresult.ejs",'utf-8'),{index:result,word:req.query.word}));
+    });
+  }else{
     res.set('Content-Type','text/html');
     res.send(fs.readFileSync('./views/search.html'));
   }
