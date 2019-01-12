@@ -1,12 +1,10 @@
-const mysql = require('mysql');
 const ejs = require('ejs');
 const fs = require('fs');
-const config = require('./config');
-const db = mysql.createConnection(config.db);
-db.connect(function(err){if(err){throw err;}});
+const database = require('./database');
+
 //渲染首页
 exports.index = function (req,res){
-  db.query('select * from videoList',(err,result)=>{
+  database.query('select * from videoList',(err,result)=>{
     if(err){throw err;}
     res.set('Content-Type','text/html');
     res.send(ejs.render(fs.readFileSync("./views/index.ejs",'utf-8'),{index:result}));
@@ -14,7 +12,7 @@ exports.index = function (req,res){
 };
 //渲染介绍页
 exports.intro = function intro(req,res){
-  db.query('select * from videoList where id=' + db.escape(req.query.id) + ';',(err,result)=>{
+  database.query('select * from videoList where id=' + database.escape(req.query.id) + ';',(err,result)=>{
     if(err){throw err;}
     let video = {};
     //写入视频信息
@@ -29,7 +27,7 @@ exports.intro = function intro(req,res){
   });
 };
 exports.player = function (req,res){
-  db.query('select * from videoList where id=' + db.escape(req.query.id) + ';',(err,result)=>{
+  database.query('select * from videoList where id=' + database.escape(req.query.id) + ';',(err,result)=>{
     if(err){throw err;}
     let video = {};
     //生成视频地址
@@ -42,7 +40,7 @@ exports.player = function (req,res){
 };
 exports.search = function (req,res){
   if(req.query.word){
-    db.query('select * from videoList WHERE name REGEXP \'' + req.query.word + '\';',(err,result)=>{
+    database.query('select * from videoList WHERE name REGEXP \'' + database.escape(req.query.word) + '\';',(err,result)=>{
       if(err){throw err;}
       res.set('Content-Type','text/html');
       res.send(ejs.render(fs.readFileSync("./views/searchresult.ejs",'utf-8'),{index:result,word:req.query.word}));
