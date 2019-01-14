@@ -27,7 +27,7 @@ exports.intro = function intro(req,res){
   });
 };
 exports.player = function (req,res){
-  database.query('select * from videoList where id=\'' + database.escape(req.query.id) + '\';',(err,result)=>{
+  database.query('select * from videoList where id=\'' + req.query.id + '\';',(err,result)=>{
     if(err){throw err;}
     let video = {};
     //生成视频地址
