@@ -18,10 +18,11 @@
       <input type="text" name="word" value=<%= word %>>
       <input type="submit" class="uk-button">
     </form>
-    <h1>搜索结果</h1>
+    <h1>搜索结果</h1><br>
+    <h6>搜索到<%= index.length%>条</h6>
     <div id="videoinfo">
       <% for(let i = 0;i<index.length;i++){ %>
-        <div class="uk-panel uk-panel-box uk-panel-box-primary uk-panel-space info">
+        <div class="uk-panel uk-panel-box uk-panel-box-primary uk-panel-space info .uk-panel-header">
           <a href=<%= '/intro?id=' + index[i].id %> >
           <img src=<%= '/static/poster/' + index[i].poster %> alt=<%= index[i].name %> width="200" height="200"></img></br>
           </a>
